@@ -3,7 +3,7 @@ import { BarChart3, Table2, Zap, Wallet, Truck, Boxes, MessageCircle, Mail, X, M
 
 const WHATSAPP = "5493743410899";
 const EMAIL = "rives183@gmail.com";
-const INSTAGRAM = "https://www.instagram.com/deniis.ri";
+const INSTAGRAM = "https://www.instagram.com/datacontrol_bi";
 const MODE = (import.meta.env.VITE_CONTACT_MODE ?? "email") as "email" | "whatsapp" | "both";
 
 const services = [
@@ -139,7 +139,7 @@ export default function App() {
           <a className="hover:text-ink" href={`mailto:${EMAIL}`}>{EMAIL}</a>
           <a className="hover:text-ink" href="/privacidad.html">Política de privacidad</a>
           <a className="inline-flex items-center gap-2 hover:text-ink" href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de DataControl BI (se abre en una pestaña nueva)">
-            <Instagram size={18} aria-hidden /> @deniis.ri
+            <Instagram size={18} aria-hidden /> @datacontrol_bi
           </a>
         </div>
       </footer>
@@ -233,7 +233,7 @@ function Contact() {
       )}
       <p className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-mute">
         <span className="inline-flex items-center gap-2"><Mail size={16} aria-hidden /> {EMAIL}</span>
-        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-ink"><Instagram size={16} aria-hidden /> @deniis.ri</a>
+        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-ink"><Instagram size={16} aria-hidden /> @datacontrol_bi</a>
       </p>
     </section>
   );
