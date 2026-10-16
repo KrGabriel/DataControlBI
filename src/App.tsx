@@ -123,7 +123,8 @@ export default function App() {
 
         <section id="sobre" className="mx-auto max-w-6xl px-5 py-20">
           <Heading kicker="Sobre mí" title="Quién está detrás de DataControl BI" />
-          <p className="max-w-2xl rounded-2xl border border-dashed border-line p-6 text-mute">[TEXTO PROVISIONAL — completar con la presentación del profesional, su enfoque de trabajo y cómo ayuda a sus clientes. No se incluyen datos biográficos, años de experiencia ni certificaciones hasta recibirlos.]</p>
+          <p className="max-w-2xl rounded-2xl border border-dashed border-line p-6 text-mute">Detrás de DataControl BI hay una propuesta clara: ayudar a las empresas a comprender mejor sus números, optimizar el control de sus operaciones y detectar oportunidades de mejora a través de Power BI.
+Desarrollo dashboards e informes interactivos que convierten datos dispersos en información clara, visual y útil para la toma de decisiones.</p>
         </section>
 
         <Contact />
