@@ -1,8 +1,9 @@
 import { useEffect, useState, type FormEvent } from "react";
-import { BarChart3, Table2, Zap, Wallet, Truck, Boxes, MessageCircle, Mail, X, Menu, Send, Loader2, CheckCircle2, ZoomIn } from "lucide-react";
+import { BarChart3, Table2, Zap, Wallet, Truck, Boxes, MessageCircle, Mail, X, Menu, Send, Loader2, CheckCircle2, ZoomIn, Instagram } from "lucide-react";
 
 const WHATSAPP = "5493743410899";
 const EMAIL = "rives183@gmail.com";
+const INSTAGRAM = "https://www.instagram.com/deniis.ri";
 const MODE = (import.meta.env.VITE_CONTACT_MODE ?? "email") as "email" | "whatsapp" | "both";
 
 const services = [
@@ -123,15 +124,23 @@ export default function App() {
 
         <section id="sobre" className="mx-auto max-w-6xl px-5 py-20">
           <Heading kicker="Sobre mí" title="Quién está detrás de DataControl BI" />
-          <p className="max-w-2xl rounded-2xl border border-dashed border-line p-6 text-mute">Detrás de DataControl BI hay una propuesta clara: ayudar a las empresas a comprender mejor sus números, optimizar el control de sus operaciones y detectar oportunidades de mejora a través de Power BI.
-Desarrollo dashboards e informes interactivos que convierten datos dispersos en información clara, visual y útil para la toma de decisiones.</p>
+          <div className="max-w-2xl space-y-4 rounded-2xl border border-line bg-card p-6 text-mute">
+            <p>Detrás de DataControl BI hay una propuesta clara: ayudar a las empresas a comprender mejor sus números, optimizar el control de sus operaciones y detectar oportunidades de mejora a través de Power BI.</p>
+            <p>Desarrollo dashboards e informes interactivos que convierten datos dispersos en información clara, visual y útil para la toma de decisiones.</p>
+          </div>
         </section>
 
         <Contact />
       </main>
 
-      <footer className="border-t border-line px-5 py-8 text-center text-sm text-mute">
-        © {new Date().getFullYear()} DataControl BI · <a className="hover:text-ink" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+      <footer className="border-t border-line px-5 py-8 text-sm text-mute">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-3">
+          <span>© {new Date().getFullYear()} DataControl BI</span>
+          <a className="hover:text-ink" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <a className="inline-flex items-center gap-2 hover:text-ink" href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de DataControl BI (se abre en una pestaña nueva)">
+            <Instagram size={18} aria-hidden /> @deniis.ri
+          </a>
+        </div>
       </footer>
 
       {(MODE === "whatsapp" || MODE === "both") && (
@@ -221,7 +230,10 @@ function Contact() {
           </button>
         </form>
       )}
-      <p className="mt-6 flex items-center justify-center gap-2 text-sm text-mute"><Mail size={16} /> {EMAIL}</p>
+      <p className="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-mute">
+        <span className="inline-flex items-center gap-2"><Mail size={16} aria-hidden /> {EMAIL}</span>
+        <a href={INSTAGRAM} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-ink"><Instagram size={16} aria-hidden /> @deniis.ri</a>
+      </p>
     </section>
   );
 }
