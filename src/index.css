@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #050b1a;
+  --color-card: #0b1630;
+  --color-line: #1b2a4d;
+  --color-brand: #2f7cff;
+  --color-sky: #5bc8ff;
+  --color-ink: #e6edfb;
+  --color-mute: #9aa9c7;
+}
+
+html { scroll-behavior: smooth; }
+body { background: var(--color-bg); color: var(--color-ink); font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+.rise { animation: rise 0.6s ease both; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; }
+}
