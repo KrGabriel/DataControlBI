@@ -137,6 +137,7 @@ export default function App() {
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-6 gap-y-3">
           <span>© {new Date().getFullYear()} DataControl BI</span>
           <a className="hover:text-ink" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+          <a className="hover:text-ink" href="/privacidad.html">Política de privacidad</a>
           <a className="inline-flex items-center gap-2 hover:text-ink" href={INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram de DataControl BI (se abre en una pestaña nueva)">
             <Instagram size={18} aria-hidden /> @deniis.ri
           </a>
@@ -221,7 +222,7 @@ function Contact() {
           </Field></div>
           <div className="sm:col-span-2"><Field label="Descripción de la consulta *" error={errors.mensaje}><textarea name="mensaje" rows={5} className={input} /></Field></div>
           <div className="sm:col-span-2">
-            <label className="flex items-start gap-3 text-sm text-mute"><input type="checkbox" name="privacidad" className="mt-1" /> Acepto que usen mis datos solo para responder esta consulta.</label>
+            <label className="flex items-start gap-3 text-sm text-mute"><input type="checkbox" name="privacidad" className="mt-1" /> <span>Acepto la <a href="/privacidad.html" target="_blank" rel="noopener noreferrer" className="text-sky underline">política de privacidad</a> y que usen mis datos solo para responder esta consulta.</span></label>
             {errors.privacidad && <p role="alert" className="mt-1 text-sm text-red-400">{errors.privacidad}</p>}
           </div>
           {status === "error" && <p role="alert" className="text-sm text-red-400 sm:col-span-2">{msg} Probá de nuevo o escribinos a {EMAIL}.</p>}
