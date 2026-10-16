@@ -4,6 +4,21 @@
 const json = (status: number, body: object) =>
   new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 
+// Límite de envíos por IP: 5 por hora.
+// Limitación: la memoria no se comparte entre instancias de la función, así que es una
+// protección básica ("mejor esfuerzo"), no un límite estricto.
+const hits = new Map<string, number[]>();
+const WINDOW_MS = 60 * 60 * 1000;
+const MAX_HITS = 5;
+function limited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  if (hits.size > 500) for (const [k, v] of hits) if (v.every((t) => now - t >= WINDOW_MS)) hits.delete(k);
+  return recent.length > MAX_HITS;
+}
+
 export default async (req: Request): Promise<Response> => {
   if (req.method !== "POST") return json(405, { error: "Método no permitido." });
 
@@ -11,6 +26,9 @@ export default async (req: Request): Promise<Response> => {
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL;
   if (!key || !to || !from) return json(500, { error: "El envío de correo todavía no está configurado." });
+
+  const ip = req.headers.get("x-nf-client-connection-ip") ?? req.headers.get("x-forwarded-for") ?? "desconocida";
+  if (limited(ip)) return json(429, { error: "Demasiados envíos. Probá de nuevo más tarde." });
 
   let d: Record<string, unknown>;
   try { d = await req.json(); } catch { return json(400, { error: "Solicitud inválida." }); }
